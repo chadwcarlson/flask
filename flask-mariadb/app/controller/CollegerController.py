@@ -4,12 +4,14 @@ from app.model.CollegerModel import Colleger
 
 
 @app.route("/colleger", methods=["GET"])
+@cache.cached(timeout=50)
 def getColleger():
     collegers = Colleger.getAll()
     return render_template("colleger.html", data=enumerate(collegers, 1))
 
 
 @app.route("/colleger", methods=["POST"])
+@cache.cached(timeout=50)
 def createColleger():
     identityNumber = request.form["identityNumber"]
     name = request.form["name"]
@@ -19,12 +21,14 @@ def createColleger():
 
 
 @app.route("/colleger/<int:id>/edit", methods=["GET"])
+@cache.cached(timeout=50)
 def updateCollegerForm(id):
     colleger = Colleger.getById(id)
     return render_template("colleger_update.html", data=colleger)
 
 
 @app.route("/colleger/<int:id>/edit", methods=["POST"])
+@cache.cached(timeout=50)
 def updateColleger(id):
     colleger = Colleger.findById(id)
 
@@ -38,6 +42,7 @@ def updateColleger(id):
 
 
 @app.route("/colleger/<int:id>/delete", methods=["GET"])
+@cache.cached(timeout=50)
 def deleteColleger(id):
     colleger = Colleger.findById(id)
     colleger.delete()
