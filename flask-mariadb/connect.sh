@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
+platform mount:download --mount migrations --target migrations -y
 platform tunne:open -e main -y
-
 export PLATFORM_RELATIONSHIPS="$(platform tunnel:info --encode)"
 
 # Redis

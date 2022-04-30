@@ -41,7 +41,7 @@ web:
     #     socket_family: unix
     commands:
         start: |
-            poetry run flask run
+            poetry run flask run -p $PORT
             # poetry run gunicorn -w 4 -b unix:$SOCKET "flaskr:create_app()"
 
 relationships:
