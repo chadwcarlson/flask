@@ -27,6 +27,11 @@ DB_USER_MYSQL=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".databas
 ## Caching.
 # Redis.
 CACHE_LOCATION_REDIS=$CACHE_SCHEME_REDIS://$CACHE_HOST_REDIS:$CACHE_PORT_REDIS
+CACHE_SCHEME_REDIS=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".rediscache[0].scheme")
+CACHE_USER_REDIS=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".rediscache[0].username")
+CACHE_PW_REDIS=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".rediscache[0].password")
+CACHE_HOST_REDIS=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".rediscache[0].host")
+CACHE_PORT_REDIS=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".rediscache[0].port")
 " > .env
 
 

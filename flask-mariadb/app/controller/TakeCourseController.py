@@ -6,6 +6,7 @@ from app.model.TakeCourseModel import TakeCourse
 
 
 @app.route("/take-courses", methods=["GET"])
+@cache.cached(timeout=50)
 def getTakeCourses():
     collegers = Colleger.getAll()
     courses = Courses.getAll()
@@ -19,6 +20,7 @@ def getTakeCourses():
 
 
 @app.route("/take-courses", methods=["POST"])
+@cache.cached(timeout=50)
 def createTakeCourse():
     collegerId = request.form["collegerId"]
     courseId = request.form["coursesId"]
@@ -32,12 +34,14 @@ def createTakeCourse():
 
 
 @app.route("/take-courses/<int:id>/add-value", methods=["GET"])
+@cache.cached(timeout=50)
 def updateValueForm(id):
     takeCourses = TakeCourse.getById(id)
     return render_template("take_courses_update.html", data=takeCourses)
 
 
 @app.route("/take-courses/<int:id>/add-value", methods=["POST"])
+@cache.cached(timeout=50)
 def updateValue(id):
     takeCourses = TakeCourse.findById(id)
 
@@ -49,6 +53,7 @@ def updateValue(id):
 
 
 @app.route("/take-courses/<int:id>/delete")
+@cache.cached(timeout=50)
 def deleteTakeCourses(id):
     takeCourses = TakeCourse.findById(id)
     takeCourses.delete()
