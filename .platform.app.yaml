@@ -30,6 +30,7 @@ hooks:
             VENV_VERSION=$(python3 -c 'import sys; print(".".join(map(str, sys.version_info[:3])))')
             pipenv --python $VENV_VERSION
             pipenv install --deploy
+            
         ############### POETRY ###################
         elif [ "$PACKAGE_MANAGER" = "poetry" ]; then
             # Install Poetry.
