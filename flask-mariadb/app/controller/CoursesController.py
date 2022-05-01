@@ -1,4 +1,5 @@
 from app import app
+from cache import cache
 from flask import request, render_template, redirect
 from app.model.CoursesModel import Courses
 

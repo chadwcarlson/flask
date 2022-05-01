@@ -1,4 +1,5 @@
 from app import app
+from cache import cache
 from flask import render_template
 
 
